@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PrepBench: Benchmarking XXX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="PrepBench is a comprehensive benchmark for evaluating XXX capabilities of large language models."
+  />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="style/main.css" />
+</head>
+<body>
+  <section class="top-hero-banner">
+    <div class="top-hero-banner-inner">
+      <h1 class="top-hero-title">
+        PrepBench
+      </h1>
+      <p class="top-hero-subtitle">
+        PrepBench evaluates large language models on realistic end-to-end XXX scenarios,
+        covering multi-step reasoning, tool usage, and robust execution.
+      </p>
+    </div>
+  </section>
+  <main class="page">
+    <!-- 顶部导航 -->
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-logo"></div>
+        <div>
+          <div class="brand-text-main">PrepBench</div>
+          <div class="brand-text-sub">Benchmarking XXX Reasoning</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="layout-main">
+      <div class="layout-main-left">
+        <div class="panel">
+          <!-- About PrepBench -->
+          <section class="section" id="about">
+            <div class="section-header">
+              <h2 class="section-title">About PrepBench</h2>
+            </div>
+            <p class="section-subtitle">
+              PrepBench is a benchmark suite for evaluating large language models on realistic,
+              end-to-end XXX reasoning workflows, from problem understanding to final execution.
+            </p>
+            <p style="font-size:0.86rem; color:var(--muted); margin-top:6px;">
+              The benchmark covers diverse domains and task formats, standardizes evaluation
+              metrics, and provides open-source tooling so that different research groups can
+              compare models fairly and reproducibly.
+            </p>
+            <div id="button-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+              <button type="button" class="btn btn-d" onclick="window.open('#', '_blank')">
+                <span class="icon">
+                  <i class="ai ai-arxiv"></i>
+                </span>
+                <span>Paper</span>
+              </button>
+              <button type="button" class="btn btn-d" onclick="window.open('https://github.com/your-org/prepbench', '_blank')">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </button>
+            </div>
+          </section>
+
+          <hr class="panel-divider" />
+
+          <!-- Citation -->
+          <section class="section" id="citation">
+          <div class="section-header">
+            <h2 class="section-title">Citation</h2>
+            <p class="section-subtitle">
+              If you find PrepBench useful in your research, please consider citing:
+            </p>
+          </div>
+
+          <article class="card">
+            <p style="font-size:0.85rem; margin-bottom:6px;">
+              PrepBench: A Benchmark for Realistic XXX Reasoning with Large Language Models.
+            </p>
+            <div class="code-block">
+@article{yourname2026prepbench,
+  title   = {PrepBench: A Benchmark for Realistic XXX Reasoning with Large Language Models},
+  author  = {Your Name and Coauthor, A. and Coauthor, B.},
+  journal = {arXiv preprint arXiv:2601.01234},
+  year    = {2026}
+}
+            </div>
+          </article>
+          </section>
+        </div>
+      </div>
+
+      <aside class="layout-main-right" id="leaderboard">
+        <div class="panel">
+          <!-- Leaderboard -->
+          <section class="section">
+            <div class="section-header">
+              <h2 class="section-title">Leaderboard</h2>
+              <p class="section-subtitle">
+                Static results for v1.0.0. Higher is better. See paper for full details.
+              </p>
+            </div>
+
+            <hr class="panel-divider" />
+
+            <div class="table-card">
+              <div class="table-header">
+                <span>Overall scores</span>
+                <div class="table-header-right">
+                  <span class="pill">Metric: success rate (%)</span>
+                  <span class="pill">Split: Full</span>
+                </div>
+              </div>
+              <div style="overflow-x:auto;">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Model</th>
+                      <th>Size</th>
+                      <th>Overall</th>
+                      <th>Planning</th>
+                      <th>Execution</th>
+                      <th>Robustness</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>#1</td>
+                      <td>Prep-XL-70B (ours)</td>
+                      <td>70B</td>
+                      <td class="score-high">71.3</td>
+                      <td>78.4</td>
+                      <td>69.7</td>
+                      <td>66.1</td>
+                      <td>2026-01</td>
+                    </tr>
+                    <tr>
+                      <td>#2</td>
+                      <td>GPT-4.1</td>
+                      <td>—</td>
+                      <td>69.5</td>
+                      <td>76.0</td>
+                      <td>67.2</td>
+                      <td>63.4</td>
+                      <td>2025-11</td>
+                    </tr>
+                    <tr>
+                      <td>#3</td>
+                      <td>Llama-3-70B-Instruct</td>
+                      <td>70B</td>
+                      <td>65.8</td>
+                      <td>72.1</td>
+                      <td>63.5</td>
+                      <td>60.2</td>
+                      <td>2025-10</td>
+                    </tr>
+                    <tr>
+                      <td>#4</td>
+                      <td>Qwen2-72B</td>
+                      <td>72B</td>
+                      <td>63.1</td>
+                      <td>69.4</td>
+                      <td>61.0</td>
+                      <td>58.7</td>
+                      <td>2025-09</td>
+                    </tr>
+                    <tr>
+                      <td>#5</td>
+                      <td>Mixtral-8x22B</td>
+                      <td>8×22B</td>
+                      <td>59.2</td>
+                      <td>64.7</td>
+                      <td>57.0</td>
+                      <td>55.3</td>
+                      <td>2025-07</td>
+                    </tr>
+                    <tr>
+                      <td>#6</td>
+                      <td>DeepSeek-Coder-V2</td>
+                      <td>33B</td>
+                      <td>57.6</td>
+                      <td>62.3</td>
+                      <td>55.1</td>
+                      <td>53.9</td>
+                      <td>2025-06</td>
+                    </tr>
+                    <tr>
+                      <td>#7</td>
+                      <td>Qwen1.5-32B</td>
+                      <td>32B</td>
+                      <td>54.8</td>
+                      <td>59.2</td>
+                      <td>52.7</td>
+                      <td>50.4</td>
+                      <td>2025-04</td>
+                    </tr>
+                    <tr>
+                      <td>#8</td>
+                      <td>Llama-3-8B</td>
+                      <td>8B</td>
+                      <td>49.3</td>
+                      <td>53.0</td>
+                      <td>47.1</td>
+                      <td>44.8</td>
+                      <td>2025-03</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>© 2026 PrepBench Team. All rights reserved.</span>
+      <span>
+        Built for the research community ·
+        <a href="mailto:contact@prepbench.org">contact@prepbench.org</a>
+      </span>
+    </footer>
+  </main>
+  <script src="script/main.js"></script>
+</body>
+</html>
