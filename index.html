@@ -32,23 +32,11 @@
         PrepBench
       </h1>
       <p class="top-hero-subtitle">
-        PrepBench evaluates large language models on realistic end-to-end XXX scenarios,
-        covering multi-step reasoning, tool usage, and robust execution.
+        Evaluating Large Language Models on NL-Driven Data Preparation
       </p>
     </div>
   </section>
   <main class="page">
-    <!-- 顶部导航 -->
-    <header class="nav">
-      <div class="brand">
-        <div class="brand-logo"></div>
-        <div>
-          <div class="brand-text-main">PrepBench</div>
-          <div class="brand-text-sub">Benchmarking XXX Reasoning</div>
-        </div>
-      </div>
-    </header>
-
     <section class="layout-main">
       <div class="layout-main-left">
         <div class="panel">
@@ -58,13 +46,10 @@
               <h2 class="section-title">About PrepBench</h2>
             </div>
             <p class="section-subtitle">
-              PrepBench is a benchmark suite for evaluating large language models on realistic,
-              end-to-end XXX reasoning workflows, from problem understanding to final execution.
+                PrepBench is a benchmark for natural-language-driven data preparation, evaluating how well systems can transform raw, messy tables into analysis-ready data from natural language requests.
             </p>
-            <p style="font-size:0.86rem; color:var(--muted); margin-top:6px;">
-              The benchmark covers diverse domains and task formats, standardizes evaluation
-              metrics, and provides open-source tooling so that different research groups can
-              compare models fairly and reproducibly.
+            <p style="font-size:0.86rem; color:var(--text); margin-top:6px;">
+                Built on real-world Preppin’ Data challenges, PrepBench captures realistic, multi-step preparation workflows with ambiguous intents and irregular data. It focuses on three key capabilities—interactive disambiguation, robust prep-code generation, and code-to-workflow translation—to measure how close today’s LLM-based agents are to practical, user-verifiable data preparation.
             </p>
             <div id="button-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
               <button type="button" class="btn btn-d" onclick="window.open('#', '_blank')">
@@ -73,7 +58,7 @@
                 </span>
                 <span>Paper</span>
               </button>
-              <button type="button" class="btn btn-d" onclick="window.open('https://github.com/your-org/prepbench', '_blank')">
+              <button type="button" class="btn btn-d" onclick="window.open('https://github.com/zzzbitz/prepbench', '_blank')">
                 <span class="icon">
                   <i class="fab fa-github"></i>
                 </span>
@@ -81,51 +66,49 @@
               </button>
             </div>
           </section>
+        </div>
 
-          <hr class="panel-divider" />
-
+        <div class="panel">
           <!-- Citation -->
           <section class="section" id="citation">
-          <div class="section-header">
-            <h2 class="section-title">Citation</h2>
-            <p class="section-subtitle">
-              If you find PrepBench useful in your research, please consider citing:
-            </p>
-          </div>
+            <div class="section-header citation-header-row">
+              <h2 class="section-title">Citation</h2>
+              <button type="button" class="citation-copy-btn" data-copy-target="citation-code">
+                Copy
+              </button>
+            </div>
 
-          <article class="card">
-            <p style="font-size:0.85rem; margin-bottom:6px;">
-              PrepBench: A Benchmark for Realistic XXX Reasoning with Large Language Models.
-            </p>
-            <div class="code-block">
-@article{yourname2026prepbench,
+            <article class="card">
+              <div class="code-block" id="citation-code">@article{yourname2026prepbench,
   title   = {PrepBench: A Benchmark for Realistic XXX Reasoning with Large Language Models},
   author  = {Your Name and Coauthor, A. and Coauthor, B.},
   journal = {arXiv preprint arXiv:2601.01234},
   year    = {2026}
-}
-            </div>
-          </article>
+}              </div>
+            </article>
           </section>
         </div>
       </div>
 
       <aside class="layout-main-right" id="leaderboard">
-        <div class="panel">
+        <div class="panel panel-leaderboard">
           <!-- Leaderboard -->
           <section class="section">
-            <div class="section-header">
+            <div class="section-header leaderboard-header">
               <h2 class="section-title">Leaderboard</h2>
-              <p class="section-subtitle">
-                Static results for v1.0.0. Higher is better. See paper for full details.
-              </p>
             </div>
 
-            <hr class="panel-divider" />
+            <div class="runmode-bar">
+              <span class="runmode-label">Run mode:</span>
+              <select class="runmode-select">
+                <option value="full">Full run</option>
+                <option value="raw">Raw run</option>
+              </select>
+            </div>
 
-            <div class="table-card">
+            <div class="table-card" data-runmode-table="full">
               <div class="table-header">
-                <span>Overall scores</span>
+                <span>Overall scores · Full run</span>
                 <div class="table-header-right">
                   <span class="pill">Metric: success rate (%)</span>
                   <span class="pill">Split: Full</span>
@@ -225,6 +208,94 @@
                       <td>47.1</td>
                       <td>44.8</td>
                       <td>2025-03</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="table-card" data-runmode-table="raw" style="display: none; margin-top: 12px;">
+              <div class="table-header">
+                <span>Overall scores · Raw run</span>
+                <div class="table-header-right">
+                  <span class="pill">Metric: cell-level F1 (%)</span>
+                  <span class="pill">Split: Raw</span>
+                </div>
+              </div>
+              <div style="overflow-x:auto;">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Model</th>
+                      <th>Size</th>
+                      <th>Overall</th>
+                      <th>Row Ops</th>
+                      <th>Column Ops</th>
+                      <th>Value Ops</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>#1</td>
+                      <td>Prep-XL-70B (ours)</td>
+                      <td>70B</td>
+                      <td class="score-high">68.2</td>
+                      <td>72.5</td>
+                      <td>66.8</td>
+                      <td>64.1</td>
+                      <td>2026-01</td>
+                    </tr>
+                    <tr>
+                      <td>#2</td>
+                      <td>GPT-4.1</td>
+                      <td>—</td>
+                      <td>65.7</td>
+                      <td>70.3</td>
+                      <td>63.0</td>
+                      <td>61.4</td>
+                      <td>2025-11</td>
+                    </tr>
+                    <tr>
+                      <td>#3</td>
+                      <td>Llama-3-70B-Instruct</td>
+                      <td>70B</td>
+                      <td>61.9</td>
+                      <td>66.4</td>
+                      <td>59.2</td>
+                      <td>57.0</td>
+                      <td>2025-10</td>
+                    </tr>
+                    <tr>
+                      <td>#4</td>
+                      <td>Qwen2-72B</td>
+                      <td>72B</td>
+                      <td>59.0</td>
+                      <td>63.8</td>
+                      <td>56.1</td>
+                      <td>54.7</td>
+                      <td>2025-09</td>
+                    </tr>
+                    <tr>
+                      <td>#5</td>
+                      <td>Mixtral-8x22B</td>
+                      <td>8×22B</td>
+                      <td>55.4</td>
+                      <td>60.2</td>
+                      <td>52.3</td>
+                      <td>50.9</td>
+                      <td>2025-07</td>
+                    </tr>
+                    <tr>
+                      <td>#6</td>
+                      <td>DeepSeek-Coder-V2</td>
+                      <td>33B</td>
+                      <td>52.7</td>
+                      <td>57.1</td>
+                      <td>49.6</td>
+                      <td>48.0</td>
+                      <td>2025-06</td>
                     </tr>
                   </tbody>
                 </table>
