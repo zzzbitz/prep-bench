@@ -8,6 +8,7 @@
     name="description"
     content="PrepBench is a comprehensive benchmark for evaluating XXX capabilities of large language models."
   />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,6 +31,7 @@
     <div class="top-hero-banner-inner">
       <div class="hero-head">
         <img
+          id="logo-img"
           class="hero-logo"
           src="assets/logo.png"
           alt="PrepBench mascot logo"
@@ -136,6 +138,22 @@
             </div>
           </div>
 
+          <div class="runmode-bar">
+            <span class="runmode-label">User Simulator</span>
+            <select class="user-simulator-select" id="user-simulator-select">
+              <option value="deepseek-v3.2">DeepSeek-V3.2</option>
+              <option value="gpt-4">GPT-4</option>
+              <option value="claude-3">Claude-3</option>
+              <option value="llama-3">Llama-3</option>
+            </select>
+          </div>
+
+          <div class="data-unavailable-message is-hidden" id="data-unavailable-message">
+            <div class="message-content">
+              <p>Data for this combination will be available soon.</p>
+            </div>
+          </div>
+
           <div class="table-card" data-runmode-table="full">
             <div class="table-header">
               <span>Overall scores · Full run</span>
@@ -158,7 +176,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">1</span>
                       <span class="lb-date">Jan 12, 2026</span>
@@ -170,7 +188,7 @@
                     <td>69.7</td>
                     <td>66.1</td>
                   </tr>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">2</span>
                       <span class="lb-date">Nov 18, 2025</span>
@@ -182,7 +200,7 @@
                     <td>67.2</td>
                     <td>63.4</td>
                   </tr>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">3</span>
                       <span class="lb-date">Oct 30, 2025</span>
@@ -194,7 +212,7 @@
                     <td>63.5</td>
                     <td>60.2</td>
                   </tr>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">4</span>
                       <span class="lb-date">Sep 15, 2025</span>
@@ -206,7 +224,7 @@
                     <td>61.0</td>
                     <td>58.7</td>
                   </tr>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">5</span>
                       <span class="lb-date">Jul 28, 2025</span>
@@ -218,7 +236,7 @@
                     <td>57.0</td>
                     <td>55.3</td>
                   </tr>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">6</span>
                       <span class="lb-date">Jun 16, 2025</span>
@@ -230,7 +248,7 @@
                     <td>55.1</td>
                     <td>53.9</td>
                   </tr>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">7</span>
                       <span class="lb-date">Apr 24, 2025</span>
@@ -242,7 +260,7 @@
                     <td>52.7</td>
                     <td>50.4</td>
                   </tr>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">8</span>
                       <span class="lb-date">Mar 12, 2025</span>
@@ -281,7 +299,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">1</span>
                       <span class="lb-date">Jan 12, 2026</span>
@@ -293,7 +311,7 @@
                     <td>66.8</td>
                     <td>64.1</td>
                   </tr>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">2</span>
                       <span class="lb-date">Nov 18, 2025</span>
@@ -305,7 +323,7 @@
                     <td>63.0</td>
                     <td>61.4</td>
                   </tr>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">3</span>
                       <span class="lb-date">Oct 30, 2025</span>
@@ -317,7 +335,7 @@
                     <td>59.2</td>
                     <td>57.0</td>
                   </tr>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">4</span>
                       <span class="lb-date">Sep 15, 2025</span>
@@ -329,7 +347,7 @@
                     <td>56.1</td>
                     <td>54.7</td>
                   </tr>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">5</span>
                       <span class="lb-date">Jul 28, 2025</span>
@@ -341,7 +359,7 @@
                     <td>52.3</td>
                     <td>50.9</td>
                   </tr>
-                  <tr>
+                  <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">6</span>
                       <span class="lb-date">Jun 16, 2025</span>

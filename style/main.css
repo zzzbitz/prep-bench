@@ -68,6 +68,13 @@ a:hover {
   object-fit: contain;
   flex: 0 0 auto;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.16));
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  transform: scale(0.95);
+}
+
+#logo-img:hover {
+  transform: scale(1.05);
 }
 
 .hero-title-block {
@@ -311,6 +318,50 @@ a:hover {
   color: #2d4a71;
 }
 
+.user-simulator-select {
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  color: #4c6280;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 160px;
+}
+
+.user-simulator-select:hover {
+  background: var(--accent-soft);
+}
+
+.user-simulator-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.data-unavailable-message {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #f9fbff;
+  padding: 20px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.data-unavailable-message.is-hidden {
+  display: none;
+}
+
+.data-unavailable-message .message-content {
+  color: #5f6f84;
+  font-size: 0.9rem;
+}
+
+.data-unavailable-message .message-content p {
+  margin: 0;
+}
+
 .table-card {
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
@@ -323,6 +374,10 @@ a:hover {
 }
 
 .table-card.is-hidden {
+  display: none;
+}
+
+.table-card.user-simulator-hidden {
   display: none;
 }
 
