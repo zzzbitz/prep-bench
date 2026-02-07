@@ -132,10 +132,10 @@
 
           <div class="runmode-bar">
             <span class="runmode-label">Run mode</span>
-            <div class="runmode-tabs" role="tablist" aria-label="Run mode">
-              <button type="button" class="runmode-tab is-active" data-runmode="full">Full run</button>
-              <button type="button" class="runmode-tab" data-runmode="raw">Raw run</button>
-            </div>
+            <select class="runmode-select" id="runmode-select">
+              <option value="code">Code</option>
+              <option value="flow">Flow</option>
+            </select>
           </div>
 
           <div class="runmode-bar">
@@ -154,226 +154,318 @@
             </div>
           </div>
 
-          <div class="table-card" data-runmode-table="full">
-            <div class="table-header">
-              <span>Overall scores · Full run</span>
-              <div class="table-header-right">
-                <span class="pill">Metric: success rate (%)</span>
-                <span class="pill">Split: Full</span>
-              </div>
-            </div>
+          <div class="table-card" data-runmode-table="code">
             <div class="table-scroll">
               <table>
                 <thead>
                   <tr>
                     <th>Rank</th>
                     <th>Model</th>
-                    <th>Size</th>
-                    <th>Overall</th>
-                    <th>Planning</th>
-                    <th>Execution</th>
-                    <th>Robustness</th>
+                    <th>Date</th>
+                    <th>Accuracy (%)</th>
+                    <th>Cost (10<sup>-3</sup> USD)</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
-                      <span class="rank-num">1</span>
-                      <span class="lb-date">Jan 12, 2026</span>
+                      <span class="rank-num">
+                        <i class="fas fa-crown rank-crown gold"></i>
+                        <span>1</span>
+                      </span>
                     </td>
-                    <td>Prep-XL-70B (ours)</td>
-                    <td>70B</td>
-                    <td class="score-high">71.3</td>
-                    <td>78.4</td>
-                    <td>69.7</td>
-                    <td>66.1</td>
+                    <td>GPT-5.1-Codex</td>
+                    <td><span class="lb-date">Jan 12, 2026</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 85.3%"></div>
+                      <span class="accuracy-value">85.3</span>
+                    </td>
+                    <td>82.74</td>
                   </tr>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
-                      <span class="rank-num">2</span>
-                      <span class="lb-date">Nov 18, 2025</span>
+                      <span class="rank-num">
+                        <i class="fas fa-crown rank-crown silver"></i>
+                        <span>2</span>
+                      </span>
                     </td>
-                    <td>GPT-4.1</td>
-                    <td>—</td>
-                    <td>69.5</td>
-                    <td>76.0</td>
-                    <td>67.2</td>
-                    <td>63.4</td>
+                    <td>Gemini 3 Flash</td>
+                    <td><span class="lb-date">Dec 15, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 74.8%"></div>
+                      <span class="accuracy-value">74.8</span>
+                    </td>
+                    <td>11.27</td>
                   </tr>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
-                      <span class="rank-num">3</span>
-                      <span class="lb-date">Oct 30, 2025</span>
+                      <span class="rank-num">
+                        <i class="fas fa-crown rank-crown bronze"></i>
+                        <span>3</span>
+                      </span>
                     </td>
-                    <td>Llama-3-70B-Instruct</td>
-                    <td>70B</td>
-                    <td>65.8</td>
-                    <td>72.1</td>
-                    <td>63.5</td>
-                    <td>60.2</td>
+                    <td>Claude-Sonnet-4.5</td>
+                    <td><span class="lb-date">Nov 28, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 70.3%"></div>
+                      <span class="accuracy-value">70.3</span>
+                    </td>
+                    <td>70.12</td>
                   </tr>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">4</span>
-                      <span class="lb-date">Sep 15, 2025</span>
                     </td>
-                    <td>Qwen2-72B</td>
-                    <td>72B</td>
-                    <td>63.1</td>
-                    <td>69.4</td>
-                    <td>61.0</td>
-                    <td>58.7</td>
+                    <td>Kimi K2 Thinking</td>
+                    <td><span class="lb-date">Oct 30, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 69.3%"></div>
+                      <span class="accuracy-value">69.3</span>
+                    </td>
+                    <td>23.68</td>
                   </tr>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">5</span>
-                      <span class="lb-date">Jul 28, 2025</span>
                     </td>
-                    <td>Mixtral-8x22B</td>
-                    <td>8×22B</td>
-                    <td>59.2</td>
-                    <td>64.7</td>
-                    <td>57.0</td>
-                    <td>55.3</td>
+                    <td>Qwen3-235B-A22B</td>
+                    <td><span class="lb-date">Sep 15, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 67.7%"></div>
+                      <span class="accuracy-value">67.7</span>
+                    </td>
+                    <td>16.76</td>
                   </tr>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">6</span>
-                      <span class="lb-date">Jun 16, 2025</span>
                     </td>
-                    <td>DeepSeek-Coder-V2</td>
-                    <td>33B</td>
-                    <td>57.6</td>
-                    <td>62.3</td>
-                    <td>55.1</td>
-                    <td>53.9</td>
+                    <td>GLM-4.7</td>
+                    <td><span class="lb-date">Jul 28, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 65.7%"></div>
+                      <span class="accuracy-value">65.7</span>
+                    </td>
+                    <td>16.7</td>
                   </tr>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">7</span>
-                      <span class="lb-date">Apr 24, 2025</span>
                     </td>
-                    <td>Qwen1.5-32B</td>
-                    <td>32B</td>
-                    <td>54.8</td>
-                    <td>59.2</td>
-                    <td>52.7</td>
-                    <td>50.4</td>
+                    <td>DeepSeek-V3.2</td>
+                    <td><span class="lb-date">Jun 16, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 65.4%"></div>
+                      <span class="accuracy-value">65.4</span>
+                    </td>
+                    <td>3.4</td>
                   </tr>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">8</span>
-                      <span class="lb-date">Mar 12, 2025</span>
                     </td>
-                    <td>Llama-3-8B</td>
-                    <td>8B</td>
-                    <td>49.3</td>
-                    <td>53.0</td>
-                    <td>47.1</td>
-                    <td>44.8</td>
+                    <td>Grok Code Fast 1</td>
+                    <td><span class="lb-date">Apr 24, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 57.5%"></div>
+                      <span class="accuracy-value">57.5</span>
+                    </td>
+                    <td>10.66</td>
+                  </tr>
+                  <tr data-user-simulator="deepseek-v3.2">
+                    <td class="rank-cell">
+                      <span class="rank-num">9</span>
+                    </td>
+                    <td>DevStral 2</td>
+                    <td><span class="lb-date">Apr 24, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 44.1%"></div>
+                      <span class="accuracy-value">44.1</span>
+                    </td>
+                    <td>1.06</td>
+                  </tr>
+                  <tr data-user-simulator="deepseek-v3.2">
+                    <td class="rank-cell">
+                      <span class="rank-num">10</span>
+                    </td>
+                    <td>GPT-4o</td>
+                    <td><span class="lb-date">Apr 24, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 39.5%"></div>
+                      <span class="accuracy-value">39.5</span>
+                    </td>
+                    <td>43.28</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-          <div class="table-card is-hidden" data-runmode-table="raw">
-            <div class="table-header">
-              <span>Overall scores · Raw run</span>
-              <div class="table-header-right">
-                <span class="pill">Metric: cell-level F1 (%)</span>
-                <span class="pill">Split: Raw</span>
-              </div>
-            </div>
+          <div class="table-card is-hidden" data-runmode-table="flow">
             <div class="table-scroll">
               <table>
                 <thead>
                   <tr>
                     <th>Rank</th>
                     <th>Model</th>
-                    <th>Size</th>
-                    <th>Overall</th>
-                    <th>Row Ops</th>
-                    <th>Column Ops</th>
-                    <th>Value Ops</th>
+                    <th>Date</th>
+                    <th>Accuracy (%)</th>
+                    <th>Cost (10<sup>-3</sup> USD)</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
-                      <span class="rank-num">1</span>
-                      <span class="lb-date">Jan 12, 2026</span>
+                      <span class="rank-num">
+                        <i class="fas fa-crown rank-crown gold"></i>
+                        <span>1</span>
+                      </span>
                     </td>
-                    <td>Prep-XL-70B (ours)</td>
-                    <td>70B</td>
-                    <td class="score-high">68.2</td>
-                    <td>72.5</td>
-                    <td>66.8</td>
-                    <td>64.1</td>
+                    <td>GPT-5.1-Codex</td>
+                    <td><span class="lb-date">Jan 12, 2026</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 67.7%"></div>
+                      <span class="accuracy-value">67.7</span>
+                    </td>
+                    <td>159.10</td>
                   </tr>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
-                      <span class="rank-num">2</span>
-                      <span class="lb-date">Nov 18, 2025</span>
+                      <span class="rank-num">
+                        <i class="fas fa-crown rank-crown silver"></i>
+                        <span>2</span>
+                      </span>
                     </td>
-                    <td>GPT-4.1</td>
-                    <td>—</td>
-                    <td>65.7</td>
-                    <td>70.3</td>
-                    <td>63.0</td>
-                    <td>61.4</td>
+                    <td>Gemini 3 Flash</td>
+                    <td><span class="lb-date">Dec 15, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 52.3%"></div>
+                      <span class="accuracy-value">52.3</span>
+                    </td>
+                    <td>16.48</td>
                   </tr>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
-                      <span class="rank-num">3</span>
-                      <span class="lb-date">Oct 30, 2025</span>
+                      <span class="rank-num">
+                        <i class="fas fa-crown rank-crown bronze"></i>
+                        <span>3</span>
+                      </span>
                     </td>
-                    <td>Llama-3-70B-Instruct</td>
-                    <td>70B</td>
-                    <td>61.9</td>
-                    <td>66.4</td>
-                    <td>59.2</td>
-                    <td>57.0</td>
+                    <td>Kimi K2 Thinking</td>
+                    <td><span class="lb-date">Nov 28, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 46.1%"></div>
+                      <span class="accuracy-value">46.1</span>
+                    </td>
+                    <td>18.33</td>
                   </tr>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">4</span>
-                      <span class="lb-date">Sep 15, 2025</span>
                     </td>
-                    <td>Qwen2-72B</td>
-                    <td>72B</td>
-                    <td>59.0</td>
-                    <td>63.8</td>
-                    <td>56.1</td>
-                    <td>54.7</td>
+                    <td>Grok Code Fast 1</td>
+                    <td><span class="lb-date">Oct 30, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 45.1%"></div>
+                      <span class="accuracy-value">45.1</span>
+                    </td>
+                    <td>20.46</td>
                   </tr>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">5</span>
-                      <span class="lb-date">Jul 28, 2025</span>
                     </td>
-                    <td>Mixtral-8x22B</td>
-                    <td>8×22B</td>
-                    <td>55.4</td>
-                    <td>60.2</td>
-                    <td>52.3</td>
-                    <td>50.9</td>
+                    <td>Claude-Sonnet-4.5</td>
+                    <td><span class="lb-date">Sep 15, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 44.8%"></div>
+                      <span class="accuracy-value">44.8</span>
+                    </td>
+                    <td>102.30</td>
                   </tr>
                   <tr data-user-simulator="deepseek-v3.2">
                     <td class="rank-cell">
                       <span class="rank-num">6</span>
-                      <span class="lb-date">Jun 16, 2025</span>
                     </td>
-                    <td>DeepSeek-Coder-V2</td>
-                    <td>33B</td>
-                    <td>52.7</td>
-                    <td>57.1</td>
-                    <td>49.6</td>
-                    <td>48.0</td>
+                    <td>Qwen3-235B-A22B</td>
+                    <td><span class="lb-date">Jul 28, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 35.0%"></div>
+                      <span class="accuracy-value">35.0</span>
+                    </td>
+                    <td>22.29</td>
+                  </tr>
+                  <tr data-user-simulator="deepseek-v3.2">
+                    <td class="rank-cell">
+                      <span class="rank-num">7</span>
+                    </td>
+                    <td>GLM-4.7</td>
+                    <td><span class="lb-date">Jun 16, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 34.6%"></div>
+                      <span class="accuracy-value">34.6</span>
+                    </td>
+                    <td>19.74</td>
+                  </tr>
+                  <tr data-user-simulator="deepseek-v3.2">
+                    <td class="rank-cell">
+                      <span class="rank-num">8</span>
+                    </td>
+                    <td>DeepSeek-V3.2</td>
+                    <td><span class="lb-date">Apr 24, 2025</span></td>
+                    <td class="accuracy-cell">
+                      <div class="accuracy-bar" style="width: 27.8%"></div>
+                      <span class="accuracy-value">27.8</span>
+                    </td>
+                    <td>4.85</td>
+                  </tr>
+                  <tr data-user-simulator="deepseek-v3.2">
+                    <td class="rank-cell">
+                      <span class="rank-num">9</span>
+                    </td>
+                    <td>GPT-4o</td>
+                    <td><span class="lb-date">Apr 24, 2025</span></td>
+                    <td class="accuracy-cell">
+                        <div class="accuracy-bar" style="width: 19.9%"></div>
+                        <span class="accuracy-value">19.9</span>
+                      </td>
+                    <td>61.89</td>
+                  </tr>
+                  <tr data-user-simulator="deepseek-v3.2">
+                    <td class="rank-cell">
+                      <span class="rank-num">10</span>
+                    </td>
+                    <td>DevStral 2</td>
+                    <td><span class="lb-date">Apr 24, 2025</span></td>
+                    <td class="accuracy-cell">
+                        <div class="accuracy-bar" style="width: 10.5%"></div>
+                        <span class="accuracy-value">10.5</span>
+                      </td>
+                    <td>1.82</td>
                   </tr>
                 </tbody>
               </table>
             </div>
+          </div>
+
+          <div class="runmode-description" data-runmode-desc="code">
+            <div class="description-content">
+              <p><strong>Code</strong> mode evaluates a model's prep-code generation ability, where the model receives <i>disamb request</i> and only performs <i>Profile</i> and <i>Code</i>.</p>
+            </div>
+          </div>
+
+          <div class="runmode-description is-hidden" data-runmode-desc="flow">
+            <div class="description-content">
+              <p><strong>Flow</strong> mode evaluates a model's ability to transfrom code into a workflow, where the model receives <i>ground-truth code</i> and only performs <i>Translate</i>.</p>
+            </div>
+          </div>
+        
+          <div class="section-detail">
+            <p><strong>Note:</strong> The result is acquired under the following conditions:</p>
+            <ul class="note-list">
+              <li>User simulator model with temperature 0.</li>
+              <li>Candidate LLM with temperature 0.7.</li>
+            </ul>
           </div>
         </section>
       </aside>

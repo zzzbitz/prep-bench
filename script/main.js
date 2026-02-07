@@ -58,37 +58,27 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const runmodeTables = document.querySelectorAll("[data-runmode-table]");
-  const runmodeTabs = document.querySelectorAll(".runmode-tab");
-  const runmodeSelect = document.querySelector(".runmode-select");
+  const runmodeDescriptions = document.querySelectorAll("[data-runmode-desc]");
+  const runmodeSelect = document.getElementById("runmode-select");
 
   const setRunmode = (mode) => {
+    // Show/hide tables
     runmodeTables.forEach((tbl) => {
       const tmode = tbl.getAttribute("data-runmode-table");
       tbl.classList.toggle("is-hidden", tmode !== mode);
     });
 
-    runmodeTabs.forEach((tab) => {
-      tab.classList.toggle("is-active", tab.getAttribute("data-runmode") === mode);
+    // Show/hide descriptions
+    runmodeDescriptions.forEach((desc) => {
+      const descMode = desc.getAttribute("data-runmode-desc");
+      desc.classList.toggle("is-hidden", descMode !== mode);
     });
   };
 
-  if (runmodeTabs.length > 0) {
-    runmodeTabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        const mode = tab.getAttribute("data-runmode");
-        if (mode) setRunmode(mode);
-      });
-    });
-
-    const defaultTab =
-      document.querySelector(".runmode-tab.is-active") || runmodeTabs[0];
-    const defaultMode = defaultTab
-      ? defaultTab.getAttribute("data-runmode")
-      : null;
-    if (defaultMode) setRunmode(defaultMode);
-  } else if (runmodeSelect) {
+  if (runmodeSelect) {
     const updateTables = () => setRunmode(runmodeSelect.value);
     runmodeSelect.addEventListener("change", updateTables);
+    // Initialize with default value
     updateTables();
   }
 
