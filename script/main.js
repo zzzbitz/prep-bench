@@ -111,6 +111,18 @@ document.addEventListener("DOMContentLoaded", function () {
         "date": "Apr 24, 2025",
         "accuracy": 15.7,
         "cost": 11.59
+      },
+      {
+        "model": "DevStral 2",
+        "date": "Apr 24, 2025",
+        "accuracy": 8.5,
+        "cost": 3.16
+      },
+      {
+        "model": "GPT-4o",
+        "date": "Apr 24, 2025",
+        "accuracy": 5.2,
+        "cost": 141.70
       }
     ]
   };
