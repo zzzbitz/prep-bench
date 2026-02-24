@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const SCROLL_THRESHOLD = 20;
 
   // Leaderboard data (rank will be calculated automatically based on accuracy)
   const leaderboardData = {
@@ -138,16 +139,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const sortedFlow = [...data.flow].sort((a, b) => b.accuracy - a.accuracy);
 
     // Render Code mode table
+    const codeTable = document.querySelector('[data-runmode-table="code"]');
     const codeTbody = document.querySelector('[data-runmode-table="code"] tbody');
     if (codeTbody) {
       codeTbody.innerHTML = sortedCode.map((item, index) => createTableRow(item, index + 1)).join("");
     }
+    setTableScrollable(codeTable, sortedCode.length);
 
     // Render Flow mode table
+    const flowTable = document.querySelector('[data-runmode-table="flow"]');
     const flowTbody = document.querySelector('[data-runmode-table="flow"] tbody');
     if (flowTbody) {
       flowTbody.innerHTML = sortedFlow.map((item, index) => createTableRow(item, index + 1)).join("");
     }
+    setTableScrollable(flowTable, sortedFlow.length);
 
     // Re-initialize user simulator logic after rendering
     setTimeout(() => {
@@ -182,6 +187,13 @@ document.addEventListener("DOMContentLoaded", function () {
         </td>
       </tr>
     `;
+  }
+
+  function setTableScrollable(tableCard, itemCount) {
+    if (!tableCard) return;
+    const scrollShell = tableCard.querySelector(".table-scroll");
+    if (!scrollShell) return;
+    scrollShell.classList.toggle("table-scrollable", itemCount > SCROLL_THRESHOLD);
   }
 
   function getCrownClass(rank) {

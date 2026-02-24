@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>PrepBench: Benchmarking XXX</title>
+  <title>PrepBench: NL-Driven Data Preparation Benchmark</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="PrepBench is a comprehensive benchmark for evaluating XXX capabilities of large language models."
+    content="PrepBench benchmarks natural-language-driven data preparation across disambiguation, prep-code generation, and workflow translation."
   />
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <!-- Google Fonts -->
@@ -57,11 +57,18 @@
           <div class="section-header">
             <h2 class="section-title">About PrepBench</h2>
           </div>
+          <div class="brand-inline">
+            <img src="assets/logo.png" alt="PrepBench logo" class="brand-inline-logo" />
+            <div class="brand-inline-text">
+              <h3>PrepBench</h3>
+              <p>NL-Driven Data Preparation Benchmark</p>
+            </div>
+          </div>
           <p class="section-subtitle">
-            PrepBench is a benchmark for natural-language-driven data preparation, evaluating how well systems can transform raw, messy tables into analysis-ready data from natural language requests.
+            PrepBench evaluates LLM-based agents on natural-language-driven data preparation across three capabilities: disambiguation, prep-code generation, and code-to-workflow abstraction.
           </p>
           <p class="section-detail">
-            Built on real-world Preppin’ Data challenges, PrepBench captures realistic, multi-step preparation workflows with ambiguous intents and irregular data. It focuses on three key capabilities: interactive disambiguation, robust prep-code generation, and code-to-workflow translation.
+            It includes tasks with ground-truth outputs, ambiguity annotations, and reference workflows.
           </p>
           <div id="button-group">
             <button type="button" class="btn btn-d" onclick="window.open('#', '_blank')">
@@ -76,7 +83,180 @@
               </span>
               <span>Code</span>
             </button>
+            <button type="button" class="btn btn-d" onclick="window.open('#', '_blank')">
+              <span class="icon">
+                <i class="fas fa-database"></i>
+              </span>
+              <span>Dataset</span>
+            </button>
           </div>
+        </section>
+
+        <hr class="section-divider" />
+
+        <section class="section" id="benchmark-scale">
+          <div class="section-header">
+            <h2 class="section-title">Benchmark Scale</h2>
+          </div>
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span class="stat-value">306</span>
+              <span class="stat-label">Tasks</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-value">829</span>
+              <span class="stat-label">Input Tables</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-value">32</span>
+              <span class="stat-label">Domains</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-value">10</span>
+              <span class="stat-label">Models Evaluated</span>
+            </article>
+          </div>
+        </section>
+
+        <hr class="section-divider" />
+
+        <section class="section" id="capabilities">
+          <div class="section-header">
+            <h2 class="section-title">Three Evaluation Capabilities</h2>
+          </div>
+          <div class="capability-list">
+            <article class="capability-card">
+              <div class="capability-head">
+                <span class="capability-icon">(1)</span>
+                <h3 class="capability-title">Interactive Disambiguation</h3>
+              </div>
+              <p class="capability-desc">
+                Tests whether systems can detect and resolve ambiguous intents through interaction.
+              </p>
+            </article>
+            <article class="capability-card">
+              <div class="capability-head">
+                <span class="capability-icon">(2)</span>
+                <h3 class="capability-title">Prep-Code Generation</h3>
+              </div>
+              <p class="capability-desc">
+                Tests whether systems can generate correct preparation code from user requests.
+              </p>
+            </article>
+            <article class="capability-card">
+              <div class="capability-head">
+                <span class="capability-icon">(3)</span>
+                <h3 class="capability-title">Code-to-Workflow Translation</h3>
+              </div>
+              <p class="capability-desc">
+                Tests whether generated code can be mapped to GUI workflows.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <hr class="section-divider" />
+
+        <section class="section" id="task-example">
+          <div class="section-header">
+            <h2 class="section-title">Task Example</h2>
+          </div>
+          <article class="example-card">
+            <header class="example-header">
+              <span class="example-title">Tour de France Team Analysis</span>
+            </header>
+            <div class="example-content">
+              <p class="example-step-label">RAW INPUT</p>
+              <div class="example-mini-table-wrap">
+                <table class="example-mini-table">
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Rider</th>
+                      <th>Team</th>
+                      <th class="times-col">Times</th>
+                      <th class="gap-col">Gap</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>GERAINT THOMAS</td>
+                      <td>TEAM SKY</td>
+                      <td class="times-col">83h 17' 13''</td>
+                      <td class="gap-col gap-leader">-</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>TOM DUMOULIN</td>
+                      <td>TEAM SUNWEB</td>
+                      <td class="times-col">83h 19' 04''</td>
+                      <td class="gap-col">+ 00h 01' 51''</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>CHRIS FROOME</td>
+                      <td>TEAM SKY</td>
+                      <td class="times-col">83h 19' 37''</td>
+                      <td class="gap-col">+ 00h 02' 24''</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>PRIMOŽ ROGLIC</td>
+                      <td>TEAM LOTTO NL</td>
+                      <td class="times-col">83h 20' 35''</td>
+                      <td class="gap-col">+ 00h 03' 22''</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p class="example-nl-request">
+                Filter to teams with 7+ finishing riders. Parse time gaps into minutes. Compute average gap per team. Keep only teams averaging ≤100 minutes behind the leader.
+              </p>
+
+              <div class="example-flow">
+                <div class="example-step">
+                  <p class="example-step-label">1. Disambiguation</p>
+                  <p class="example-step-text"><strong>Q₁:</strong> The Gap column contains "-" for some riders. Should I treat it as missing data?<br /><strong>A₁:</strong> No - "-" means the race leader. Their gap is zero.</p>
+                  <p class="example-step-text"><strong>Q₂:</strong> Should the team average gap be rounded or floored to an integer?<br /><strong>A₂:</strong> Floored. A team with 96.8 min should show 96.</p>
+                </div>
+                <div class="example-step">
+                  <p class="example-step-label">2. Prep-Code Generation</p>
+                  <div class="example-code-shell">
+                    <div class="example-code-head">python</div>
+                    <pre class="example-code"><span class="code-comment"># Leader's gap is "-", treat as zero</span>
+df[<span class="code-str">"gap_min"</span>] = <span class="code-fn">np.where</span>(
+    df[<span class="code-str">"Gap"</span>] == <span class="code-str">"-"</span>, <span class="code-num">0.0</span>,
+    df[<span class="code-str">"Gap"</span>].<span class="code-fn">str.extract</span>(<span class="code-str">r"(\d+)h\s*(\d+)'\s*(\d+)''"</span>)
+      .<span class="code-fn">astype</span>(float).<span class="code-fn">apply</span>(
+        <span class="code-kw">lambda</span> r: r[<span class="code-num">0</span>]*<span class="code-num">60</span> + r[<span class="code-num">1</span>] + r[<span class="code-num">2</span>]/<span class="code-num">60</span>, axis=<span class="code-num">1</span>))
+<span class="code-comment"># Aggregate by team, floor the result</span>
+team = df.<span class="code-fn">groupby</span>(<span class="code-str">"Team"</span>).<span class="code-fn">agg</span>(
+    avg_gap=(<span class="code-str">"gap_min"</span>, <span class="code-str">"mean"</span>),
+    riders=(<span class="code-str">"Rider"</span>, <span class="code-str">"count"</span>))
+team[<span class="code-str">"avg_gap"</span>] = <span class="code-fn">np.floor</span>(team[<span class="code-str">"avg_gap"</span>])</pre>
+                  </div>
+                </div>
+                <div class="example-step">
+                  <p class="example-step-label">3. Code-to-Workflow</p>
+                  <div class="example-workflow">
+                    <span>Input</span>
+                    <span>→</span>
+                    <span>Project</span>
+                    <span>→</span>
+                    <span>Aggregate</span>
+                    <span>→</span>
+                    <span>Filter</span>
+                    <span>→</span>
+                    <span>Sort</span>
+                    <span>→</span>
+                    <span>Output</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
         </section>
 
         <hr class="section-divider" />
@@ -114,8 +294,8 @@
 
           <article class="card">
             <div class="code-block" id="citation-code">@article{yourname2026prepbench,
-  title   = {PrepBench: A Benchmark for Realistic XXX Reasoning with Large Language Models},
-  author  = {Your Name and Coauthor, A. and Coauthor, B.},
+  title   = {PrepBench: A Benchmark for Realistic NL-Driven Data Preparation},
+  author  = {Xu, Jingzhe and Wang, Rui and Wang, Jiannan and Li, Guoliang},
   journal = {arXiv preprint arXiv:2601.01234},
   year    = {2026}
 }</div>
@@ -186,7 +366,6 @@
               </table>
             </div>
           </div>
-
         </section>
       </aside>
     </section>
