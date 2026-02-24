@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+
   // Leaderboard data (rank will be calculated automatically based on accuracy)
   const leaderboardData = {
     "code": [
@@ -133,7 +134,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function renderLeaderboard(data) {
-    // Sort data by accuracy (descending) and calculate rank
     const sortedCode = [...data.code].sort((a, b) => b.accuracy - a.accuracy);
     const sortedFlow = [...data.flow].sort((a, b) => b.accuracy - a.accuracy);
 
@@ -161,20 +161,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const crownIcon = rank <= 3 
       ? `<i class="fas fa-crown rank-crown ${getCrownClass(rank)}"></i>` 
       : "";
-    const rankDisplay = crownIcon 
+    const rankDisplay = crownIcon
       ? `<span class="rank-num">${crownIcon}<span>${rank}</span></span>`
       : `<span class="rank-num">${rank}</span>`;
+    const dateDisplay = item.date || "N/A";
+    const modelDisplay = `Prep-Agent+${item.model}`;
+    const accuracyValue = Number(item.accuracy).toFixed(1);
 
     return `
-      <tr data-user-simulator="deepseek-v3.2">
-        <td class="rank-cell">${rankDisplay}</td>
-        <td>${item.model}</td>
-        <td><span class="lb-date">${item.date}</span></td>
-        <td class="accuracy-cell">
-          <div class="accuracy-bar" style="width: ${item.accuracy}%"></div>
-          <span class="accuracy-value">${item.accuracy}</span>
+      <tr data-user-simulator="deepseek">
+        <td class="rank-cell">
+          <div class="rank-stack">
+            ${rankDisplay}
+            <span class="lb-date">${dateDisplay}</span>
+          </div>
         </td>
-        <td>${item.cost}</td>
+        <td>${modelDisplay}</td>
+        <td class="accuracy-cell">
+          <span class="accuracy-value">${accuracyValue}</span>
+        </td>
       </tr>
     `;
   }
@@ -245,7 +250,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const runmodeTables = document.querySelectorAll("[data-runmode-table]");
-  const runmodeDescriptions = document.querySelectorAll("[data-runmode-desc]");
   const runmodeSelect = document.getElementById("runmode-select");
 
   const setRunmode = (mode) => {
@@ -253,12 +257,6 @@ document.addEventListener("DOMContentLoaded", function () {
     runmodeTables.forEach((tbl) => {
       const tmode = tbl.getAttribute("data-runmode-table");
       tbl.classList.toggle("is-hidden", tmode !== mode);
-    });
-
-    // Show/hide descriptions
-    runmodeDescriptions.forEach((desc) => {
-      const descMode = desc.getAttribute("data-runmode-desc");
-      desc.classList.toggle("is-hidden", descMode !== mode);
     });
   };
 
@@ -275,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const allTableCards = document.querySelectorAll(".table-card");
 
   const setUserSimulator = (simulator) => {
-    const isDeepSeek = simulator === "deepseek-v3.2";
+    const isDeepSeek = simulator === "deepseek";
     // Get table rows dynamically each time (in case data was just loaded)
     const allTableRows = document.querySelectorAll("tbody tr[data-user-simulator]");
     
@@ -285,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
         card.classList.remove("user-simulator-hidden");
       });
       
-      // Show rows for DeepSeek-V3.2
+      // Show rows for DeepSeek
       allTableRows.forEach((row) => {
         const rowSimulator = row.getAttribute("data-user-simulator");
         row.style.display = rowSimulator === simulator ? "" : "none";

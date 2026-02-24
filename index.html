@@ -141,10 +141,9 @@
           <div class="runmode-bar">
             <span class="runmode-label">User Simulator</span>
             <select class="user-simulator-select" id="user-simulator-select">
-              <option value="deepseek-v3.2">DeepSeek-V3.2</option>
-              <option value="gpt-4">GPT-4</option>
-              <option value="claude-3">Claude-3</option>
-              <option value="llama-3">Llama-3</option>
+              <option value="deepseek">DeepSeek</option>
+              <option value="gpt4o">GPT-4o</option>
+              <option value="gemini3flash">Gemini 3 Flash</option>
             </select>
           </div>
 
@@ -161,9 +160,7 @@
                   <tr>
                     <th>Rank</th>
                     <th>Model</th>
-                    <th>Date</th>
                     <th>Accuracy (%)</th>
-                    <th>Cost (10<sup>-3</sup> USD)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -180,9 +177,7 @@
                   <tr>
                     <th>Rank</th>
                     <th>Model</th>
-                    <th>Date</th>
                     <th>Accuracy (%)</th>
-                    <th>Cost (10<sup>-3</sup> USD)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -192,25 +187,6 @@
             </div>
           </div>
 
-          <div class="runmode-description" data-runmode-desc="code">
-            <div class="description-content">
-              <p><strong>Code</strong> mode evaluates a model's prep-code generation ability.</p>
-            </div>
-          </div>
-
-          <div class="runmode-description is-hidden" data-runmode-desc="flow">
-            <div class="description-content">
-              <p><strong>Flow</strong> mode evaluates a model's ability to generate workflows.</p>
-            </div>
-          </div>
-        
-          <div class="section-detail">
-            <p><strong>Note:</strong> The result is acquired under the following conditions:</p>
-            <ul class="note-list">
-              <li>User simulator model with temperature 0.</li>
-              <li>Candidate LLM with temperature 0.7.</li>
-            </ul>
-          </div>
         </section>
       </aside>
     </section>

@@ -1,0 +1,5 @@
+version: 1
+interface:
+  display_name: Frontend Design
+  short_description: Create bold, production-grade frontend UI with distinctive visual direction.
+  default_prompt: Build a distinctive, production-grade frontend interface for this request.
