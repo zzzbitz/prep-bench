@@ -1,42 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>PrepBench: NL-Driven Data Preparation Benchmark</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="PrepBench benchmarks natural-language-driven data preparation across disambiguation, prep-code generation, and workflow translation."
-  />
+  <meta name="description"
+    content="PrepBench benchmarks natural-language-driven data preparation across disambiguation, prep-code generation, and workflow translation." />
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="style/main.css" />
 </head>
+
 <body>
   <section class="top-hero-banner">
     <div class="top-hero-banner-inner">
       <div class="hero-head">
-        <img
-          id="logo-img"
-          class="hero-logo"
-          src="assets/logo.png"
-          alt="PrepBench mascot logo"
-          onerror="this.style.display='none'"
-        />
+        <img id="logo-img" class="hero-logo" src="assets/logo.png" alt="PrepBench mascot logo"
+          onerror="this.style.display='none'" />
         <div class="hero-title-block">
           <h1 class="top-hero-title">
             PrepBench
@@ -65,10 +53,8 @@
             </div>
           </div>
           <p class="section-subtitle">
-            PrepBench evaluates LLM-based agents on natural-language-driven data preparation across three capabilities: disambiguation, prep-code generation, and code-to-workflow abstraction.
-          </p>
-          <p class="section-detail">
-            It includes tasks with ground-truth outputs, ambiguity annotations, and reference workflows.
+            PrepBench evaluates LLM-based agents on natural-language-driven data preparation across three capabilities:
+            disambiguation, prep-code generation, and code-to-workflow abstraction.
           </p>
           <div id="button-group">
             <button type="button" class="btn btn-d" onclick="window.open('#', '_blank')">
@@ -77,7 +63,8 @@
               </span>
               <span>Paper</span>
             </button>
-            <button type="button" class="btn btn-d" onclick="window.open('https://github.com/zzzbitz/prepbench', '_blank')">
+            <button type="button" class="btn btn-d"
+              onclick="window.open('https://github.com/zzzbitz/prepbench', '_blank')">
               <span class="icon">
                 <i class="fab fa-github"></i>
               </span>
@@ -89,32 +76,6 @@
               </span>
               <span>Dataset</span>
             </button>
-          </div>
-        </section>
-
-        <hr class="section-divider" />
-
-        <section class="section" id="benchmark-scale">
-          <div class="section-header">
-            <h2 class="section-title">Benchmark Scale</h2>
-          </div>
-          <div class="stats-grid">
-            <article class="stat-card">
-              <span class="stat-value">306</span>
-              <span class="stat-label">Tasks</span>
-            </article>
-            <article class="stat-card">
-              <span class="stat-value">829</span>
-              <span class="stat-label">Input Tables</span>
-            </article>
-            <article class="stat-card">
-              <span class="stat-value">32</span>
-              <span class="stat-label">Domains</span>
-            </article>
-            <article class="stat-card">
-              <span class="stat-value">10</span>
-              <span class="stat-label">Models Evaluated</span>
-            </article>
           </div>
         </section>
 
@@ -212,20 +173,25 @@
               </div>
 
               <p class="example-nl-request">
-                Filter to teams with 7+ finishing riders. Parse time gaps into minutes. Compute average gap per team. Keep only teams averaging ≤100 minutes behind the leader.
+                Filter to teams with 7+ finishing riders. Parse time gaps into minutes. Compute average gap per team.
+                Keep only teams averaging ≤100 minutes behind the leader.
               </p>
 
               <div class="example-flow">
                 <div class="example-step">
                   <p class="example-step-label">1. Disambiguation</p>
-                  <p class="example-step-text"><strong>Q₁:</strong> The Gap column contains "-" for some riders. Should I treat it as missing data?<br /><strong>A₁:</strong> No - "-" means the race leader. Their gap is zero.</p>
-                  <p class="example-step-text"><strong>Q₂:</strong> Should the team average gap be rounded or floored to an integer?<br /><strong>A₂:</strong> Floored. A team with 96.8 min should show 96.</p>
+                  <p class="example-step-text"><strong>Q₁:</strong> The Gap column contains "-" for some riders. Should
+                    I treat it as missing data?<br /><strong>A₁:</strong> No - "-" means the race leader. Their gap is
+                    zero.</p>
+                  <p class="example-step-text"><strong>Q₂:</strong> Should the team average gap be rounded or floored to
+                    an integer?<br /><strong>A₂:</strong> Floored. A team with 96.8 min should show 96.</p>
                 </div>
                 <div class="example-step">
                   <p class="example-step-label">2. Prep-Code Generation</p>
                   <div class="example-code-shell">
                     <div class="example-code-head">python</div>
-                    <pre class="example-code"><span class="code-comment"># Leader's gap is "-", treat as zero</span>
+                    <pre
+                      class="example-code"><span class="code-comment"># Leader's gap is "-", treat as zero</span>
 df[<span class="code-str">"gap_min"</span>] = <span class="code-fn">np.where</span>(
     df[<span class="code-str">"Gap"</span>] == <span class="code-str">"-"</span>, <span class="code-num">0.0</span>,
     df[<span class="code-str">"Gap"</span>].<span class="code-fn">str.extract</span>(<span class="code-str">r"(\d+)h\s*(\d+)'\s*(\d+)''"</span>)
@@ -268,15 +234,8 @@ team[<span class="code-str">"avg_gap"</span>] = <span class="code-fn">np.floor</
           <ul class="news-list">
             <li class="news-item">
               <span class="news-date">2026-02-05</span>
-              <span class="news-text">Website and leaderboard are now online.</span>
-            </li>
-            <li class="news-item">
-              <span class="news-date">2026-01-28</span>
-              <span class="news-text">Released the initial evaluation split and baseline results.</span>
-            </li>
-            <li class="news-item">
-              <span class="news-date">2026-01-14</span>
-              <span class="news-text">Published benchmark construction protocol and annotation guide.</span>
+              <span class="news-text">Website and leaderboard are now online. Released the initial evaluation split and
+                baseline results. Published benchmark construction protocol and annotation guide.</span>
             </li>
           </ul>
         </section>
@@ -293,12 +252,7 @@ team[<span class="code-str">"avg_gap"</span>] = <span class="code-fn">np.floor</
           </div>
 
           <article class="card">
-            <div class="code-block" id="citation-code">@article{yourname2026prepbench,
-  title   = {PrepBench: A Benchmark for Realistic NL-Driven Data Preparation},
-  author  = {Xu, Jingzhe and Wang, Rui and Wang, Jiannan and Li, Guoliang},
-  journal = {arXiv preprint arXiv:2601.01234},
-  year    = {2026}
-}</div>
+            <div class="code-block" id="citation-code"></div>
           </article>
         </section>
       </div>
@@ -370,15 +324,8 @@ team[<span class="code-str">"avg_gap"</span>] = <span class="code-fn">np.floor</
       </aside>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <span>© 2026 PrepBench Team. All rights reserved.</span>
-      <span>
-        Built for the research community ·
-        <a href="mailto:contact@prepbench.org">contact@prepbench.org</a>
-      </span>
-    </footer>
   </main>
   <script src="script/main.js"></script>
 </body>
+
 </html>
