@@ -335,16 +335,26 @@ a:hover {
 
 .capability-head {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
+  align-items: center;
+  gap: 10px;
 }
 
 .capability-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1px solid #d3deed;
+  background: #f2f6fc;
   font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  color: #486180;
-  font-size: 0.78rem;
-  font-weight: 500;
+  color: #2f4f78;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .capability-title {
